@@ -31,6 +31,13 @@
                                     @endif
                                 </div>
                                 <div class="flex gap-2">
+                                    <form method="POST" action="{{ route('tasks.toggle', $task) }}" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-sm {{ $task->is_completed ? 'btn-success' : 'btn-warning' }}">
+                                            {{ $task->is_completed ? '↩️ Undo' : '✅ Complete' }}
+                                        </button>
+                                    </form>
                                     <a href="{{ route('tasks.edit', $task) }}" class="btn btn-sm btn-outline">✏️ Edit</a>
                                     <form method="POST" action="{{ route('tasks.destroy', $task) }}" class="inline">
                                         @csrf

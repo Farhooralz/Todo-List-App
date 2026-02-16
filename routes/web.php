@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::resource("tasks", TasksController::class);
+Route::patch('tasks/{task}/toggle', [TasksController::class, 'toggle'])->name('tasks.toggle');
